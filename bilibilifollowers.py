@@ -1,4 +1,5 @@
 # coding=utf-8
+import random
 import re
 import pygame
 import requests
@@ -10,6 +11,6 @@ response.encoding = 'utf-8'
 data = re.findall(r'\b\d+\b', response.text.lstrip('{"code":0,"message":"0","ttl":1,"data":{"id":').rstrip("}"))
 text = "Followers:%s" % (data[4])
 font = pygame.font.SysFont('arial', 256)  # 字体大小256
-rtext = font.render(text, True, (0, 0, 0), (255, 255, 255))  # 默认RGB 255.255.255
+rtext = font.render(text, True, (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)),(255, 255, 255))  # 随机RGB颜色
 
 pygame.image.save(rtext, "D:/followers.jpg")  # D盘为默认路径,followers.jpg为默认名
